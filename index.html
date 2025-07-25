@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Erlang Calculator - Cyber Physical System Laboratory</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="min-h-screen">
+        <!-- Background Elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="floating-element absolute top-20 left-10 w-20 h-20 bg-white opacity-10 rounded-full"></div>
+        <div class="floating-element absolute top-40 right-20 w-16 h-16 bg-white opacity-10 rounded-full" style="animation-delay: 2s;"></div>
+        <div class="floating-element absolute bottom-40 left-20 w-12 h-12 bg-white opacity-10 rounded-full" style="animation-delay: 4s;"></div>
+    </div>
+
+    <div class="container mx-auto px-4 py-8 max-w-7xl relative">
+<!-- Header -->
+<header class="text-center mb-12">
+    <!-- Logo Row -->
+    <div class="flex justify-center items-center gap-6 mb-6">
+        <!-- Lab Logo -->
+        <img src="logo cps2.png" alt="Lab Logo" class="w-16 h-16 rounded-full border border-white shadow-md" />
+
+        <!-- Partner/Secondary Logo -->
+        <img src="TU-logogram-238x300.webp" alt="Partner Logo" class="w-16 h-16 rounded-full border border-white shadow-md" />
+    </div>
+
+    <!-- Title -->
+    <h1 class="text-5xl font-bold text-white mb-4 pulse-animation">
+        <i class="fas fa-chart-line mr-4"></i>Erlang Calculator
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="text-xl text-white opacity-90">
+        Advanced blocking probability & call center staffing analysis
+    </p>
+
+    <!-- Tags -->
+    <div class="mt-6 flex justify-center space-x-4">
+        <div class="glass-effect px-4 py-2 rounded-full">
+            <span class="text-white text-sm">
+                <i class="fas fa-phone mr-2"></i>Telecommunications
+            </span>
+        </div>
+        <div class="glass-effect px-4 py-2 rounded-full">
+            <span class="text-white text-sm">
+                <i class="fas fa-users mr-2"></i>Call Centers
+            </span>
+        </div>
+        <div class="glass-effect px-4 py-2 rounded-full">
+            <span class="text-white text-sm">
+                <i class="fas fa-chart-bar mr-2"></i>Analytics
+            </span>
+        </div>
+    </div>
+</header>
+
+
+        <!-- Tabs -->
+        <div class="flex justify-center mb-8">
+            <div class="glass-effect rounded-xl p-2 flex space-x-2">
+                <button id="erlangBTab" class="tab-active px-8 py-4 rounded-lg font-semibold transition-all duration-300 focus:outline-none">
+                    <i class="fas fa-phone-slash mr-3"></i>Erlang B
+                </button>
+                <button id="erlangCTab" class="tab-inactive px-8 py-4 rounded-lg font-semibold transition-all duration-300 focus:outline-none">
+                    <i class="fas fa-headset mr-3"></i>Erlang C
+                </button>
+            </div>
+        </div>
+
+        <!-- Erlang B Calculator -->
+        <div id="erlangBContent" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Input Form -->
+            <div class="glass-effect card-shadow p-8 rounded-xl">
+                <h2 class="text-3xl font-bold text-white mb-6">
+                    <i class="fas fa-calculator mr-3 text-yellow-300"></i>Erlang B
+                </h2>
+                <p class="text-white opacity-90 mb-8">Calculate blocking probability for circuit-switched networks</p>
+                
+                <div class="space-y-6">
+                    <div>
+                        <label for="trafficB" class="block text-sm font-semibold text-white mb-2">
+                            <i class="fas fa-chart-line mr-2"></i>Traffic Intensity (Erlangs)
+                        </label>
+                        <input type="number" id="trafficB" step="0.01" min="0" placeholder="e.g. 8.5"
+                               class="input-glow w-full px-4 py-3 bg-white bg-opacity-90 border-0 rounded-lg focus:outline-none text-gray-800">
+                        <p class="text-xs text-white opacity-70 mt-2">Total offered traffic load</p>
+                    </div>
+                    
+                    <div>
+                        <label for="channelsB" class="block text-sm font-semibold text-white mb-2">
+                            <i class="fas fa-sitemap mr-2"></i>Number of Channels
+                        </label>
+                        <input type="number" id="channelsB" min="1" placeholder="e.g. 10"
+                               class="input-glow w-full px-4 py-3 bg-white bg-opacity-90 border-0 rounded-lg focus:outline-none text-gray-800">
+                        <p class="text-xs text-white opacity-70 mt-2">Available circuit lines</p>
+                    </div>
+                    
+                    <button id="calculateB" class="btn-gradient w-full text-white py-4 px-6 rounded-lg font-semibold focus:outline-none">
+                        <i class="fas fa-cogs mr-2"></i>Calculate Blocking Probability
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Results -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- Results Card -->
+                <div id="resultB" class="result-card glass-effect card-shadow p-8 rounded-xl">
+                    <h3 class="text-2xl font-bold text-white mb-6">
+                        <i class="fas fa-chart-pie mr-3 text-green-300"></i>Results
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="metric-card p-6 rounded-xl">
+                            <div class="flex items-center justify-between mb-3">
+                                <p class="text-sm font-semibold text-blue-600">Blocking Probability</p>
+                                <i class="fas fa-exclamation-triangle text-blue-500"></i>
+                            </div>
+                            <p id="blockingProb" class="text-3xl font-bold text-blue-700">0.00%</p>
+                        </div>
+                        <div class="metric-card p-6 rounded-xl">
+                            <div class="flex items-center justify-between mb-3">
+                                <p class="text-sm font-semibold text-purple-600">Grade of Service</p>
+                                <i class="fas fa-star text-purple-500"></i>
+                            </div>
+                            <p id="gradeService" class="text-3xl font-bold text-purple-700">0.00</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 p-6 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-xl border border-yellow-200">
+                        <div class="flex items-start">
+                            <i class="fas fa-lightbulb text-yellow-600 mt-1 mr-3"></i>
+                            <div>
+                                <p class="text-sm font-semibold text-yellow-800 mb-2">Interpretation</p>
+                                <p id="interpretationB" class="text-sm text-yellow-700">Configure your parameters to see blocking probability analysis.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Chart Container -->
+                <div id="chartContainerB" class="chart-container card-shadow rounded-xl">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">
+                        <i class="fas fa-chart-area mr-2 text-blue-600"></i>Blocking Probability vs Channels
+                    </h3>
+                    <canvas id="erlangBChart" width="400" height="200"></canvas>
+                </div>
+                
+                <!-- Formula & Info -->
+                <div class="formula-box card-shadow p-8 rounded-xl">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">
+                        <i class="fas fa-flask mr-3 text-blue-600"></i>Erlang B Formula
+                    </h3>
+                    <div class="bg-gray-100 p-6 rounded-lg mb-6">
+                        <p class="text-center font-mono text-lg text-gray-700">
+                            P<sub>B</sub> = (A<sup>N</sup> / N!) / (Σ<sub>k=0</sub><sup>N</sup> A<sup>k</sup> / k!)
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="flex items-start p-4 bg-blue-50 rounded-lg">
+                            <i class="fas fa-info-circle text-blue-500 mt-1 mr-3"></i>
+                            <p class="text-sm text-gray-700">Assumes blocked calls are immediately lost</p>
+                        </div>
+                        <div class="flex items-start p-4 bg-green-50 rounded-lg">
+                            <i class="fas fa-network-wired text-green-500 mt-1 mr-3"></i>
+                            <p class="text-sm text-gray-700">Used for circuit-switched networks</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Erlang C Calculator -->
+        <div id="erlangCContent" class="grid grid-cols-1 lg:grid-cols-3 gap-8 hidden">
+            <!-- Input Form -->
+            <div class="glass-effect card-shadow p-8 rounded-xl">
+                <h2 class="text-3xl font-bold text-white mb-6">
+                    <i class="fas fa-users mr-3 text-green-300"></i>Erlang C
+                </h2>
+                <p class="text-white opacity-90 mb-8">Optimize call center staffing and service levels</p>
+                
+                <div class="space-y-6">
+                    <div>
+                        <label for="trafficC" class="block text-sm font-semibold text-white mb-2">
+                            <i class="fas fa-chart-line mr-2"></i>Traffic Intensity (Erlangs)
+                        </label>
+                        <input type="number" id="trafficC" step="0.01" min="0" placeholder="e.g. 15.5"
+                               class="input-glow w-full px-4 py-3 bg-white bg-opacity-90 border-0 rounded-lg focus:outline-none text-gray-800">
+                    </div>
+                    
+                    <div>
+                        <label for="agentsC" class="block text-sm font-semibold text-white mb-2">
+                            <i class="fas fa-headset mr-2"></i>Number of Agents
+                        </label>
+                        <input type="number" id="agentsC" min="1" placeholder="e.g. 18"
+                               class="input-glow w-full px-4 py-3 bg-white bg-opacity-90 border-0 rounded-lg focus:outline-none text-gray-800">
+                    </div>
+                    
+                    <div>
+                        <label for="targetTime" class="block text-sm font-semibold text-white mb-2">
+                            <i class="fas fa-clock mr-2"></i>Target Answer Time (sec)
+                        </label>
+                        <input type="number" id="targetTime" min="1" value="20" 
+                               class="input-glow w-full px-4 py-3 bg-white bg-opacity-90 border-0 rounded-lg focus:outline-none text-gray-800">
+                    </div>
+                    
+                    <div>
+                        <label for="serviceTime" class="block text-sm font-semibold text-white mb-2">
+                            <i class="fas fa-timer mr-2"></i>Service Time (sec)
+                        </label>
+                        <input type="number" id="serviceTime" min="1" value="180" 
+                               class="input-glow w-full px-4 py-3 bg-white bg-opacity-90 border-0 rounded-lg focus:outline-none text-gray-800">
+                    </div>
+                    
+                    <button id="calculateC" class="btn-gradient w-full text-white py-4 px-6 rounded-lg font-semibold focus:outline-none">
+                        <i class="fas fa-analytics mr-2"></i>Calculate Performance
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Results -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- Results Card -->
+                <div id="resultC" class="result-card glass-effect card-shadow p-8 rounded-xl">
+                    <h3 class="text-2xl font-bold text-white mb-6">
+                        <i class="fas fa-tachometer-alt mr-3 text-green-300"></i>Performance Metrics
+                    </h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="metric-card p-4 rounded-xl">
+                            <div class="flex items-center justify-between mb-2">
+                                <p class="text-xs font-semibold text-blue-600">Wait Probability</p>
+                                <i class="fas fa-hourglass-half text-blue-500 text-sm"></i>
+                            </div>
+                            <p id="waitingProb" class="text-2xl font-bold text-blue-700">0.00%</p>
+                        </div>
+                        <div class="metric-card p-4 rounded-xl">
+                            <div class="flex items-center justify-between mb-2">
+                                <p class="text-xs font-semibold text-green-600">Service Level</p>
+                                <i class="fas fa-check-circle text-green-500 text-sm"></i>
+                            </div>
+                            <p id="serviceLevel" class="text-2xl font-bold text-green-700">0.00%</p>
+                        </div>
+                        <div class="metric-card p-4 rounded-xl">
+                            <div class="flex items-center justify-between mb-2">
+                                <p class="text-xs font-semibold text-purple-600">Avg Wait Time</p>
+                                <i class="fas fa-clock text-purple-500 text-sm"></i>
+                            </div>
+                            <p id="avgWaitTime" class="text-2xl font-bold text-purple-700">0.00s</p>
+                        </div>
+                        <div class="metric-card p-4 rounded-xl">
+                            <div class="flex items-center justify-between mb-2">
+                                <p class="text-xs font-semibold text-red-600">Utilization</p>
+                                <i class="fas fa-percentage text-red-500 text-sm"></i>
+                            </div>
+                            <p id="agentUtilization" class="text-2xl font-bold text-red-700">0.00%</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 p-6 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl border border-blue-200">
+                        <div class="flex items-start">
+                            <i class="fas fa-lightbulb text-blue-600 mt-1 mr-3"></i>
+                            <div>
+                                <p class="text-sm font-semibold text-blue-800 mb-2">Analysis</p>
+                                <p id="interpretationC" class="text-sm text-blue-700">Configure your call center parameters to see performance analysis.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Chart Container -->
+                <div id="chartContainerC" class="chart-container card-shadow rounded-xl">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">
+                        <i class="fas fa-chart-line mr-2 text-green-600"></i>Service Level vs Agents
+                    </h3>
+                    <canvas id="erlangCChart" width="400" height="200"></canvas>
+                </div>
+                
+                <!-- Formula & Info -->
+                <div class="formula-box card-shadow p-8 rounded-xl">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">
+                        <i class="fas fa-flask mr-3 text-green-600"></i>Erlang C Formula
+                    </h3>
+                    <div class="bg-gray-100 p-6 rounded-lg mb-6">
+                        <p class="text-center font-mono text-lg text-gray-700">
+                            P<sub>W</sub> = (A<sup>N</sup> / N!) / (A<sup>N</sup> / N! + (1 - A/N) Σ<sub>k=0</sub><sup>N-1</sup> A<sup>k</sup> / k!)
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="flex items-start p-4 bg-green-50 rounded-lg">
+                            <i class="fas fa-info-circle text-green-500 mt-1 mr-3"></i>
+                            <p class="text-sm text-gray-700">Calls wait in queue until served</p>
+                        </div>
+                        <div class="flex items-start p-4 bg-purple-50 rounded-lg">
+                            <i class="fas fa-users text-purple-500 mt-1 mr-3"></i>
+                            <p class="text-sm text-gray-700">Optimizes call center staffing</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+<footer class="mt-16 text-center">
+    <div class="glass-effect p-6 rounded-xl inline-block">
+        <div class="flex items-center justify-center mb-4 gap-3">
+            <img src="logo cps2.png" alt="Lab Logo" class="w-10 h-10 rounded-full shadow-md border border-white" />
+            <p class="text-red text-sm opacity-90">
+                <i class="fas fa-chart-bar mr-2"></i>
+                Advanced Erlang Calculator - Cyber Physical System Laboratory
+            </p>
+        </div>
+        
+        <!-- Tagline -->
+        <p class="text-red text-xs opacity-70 mt-2">
+            Based on A.K. Erlang's queueing theory formulas
+        </p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

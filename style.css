@@ -1,0 +1,107 @@
+body {
+            background: linear-gradient(135deg, #851616 50%, #ebd7b1 50%);
+            min-height: 100vh;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .card-shadow {
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tab-active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .tab-inactive {
+            background: rgba(255, 255, 255, 0.8);
+            color: #4a5568;
+        }
+        
+        .tab-inactive:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-1px);
+        }
+        
+        .input-glow {
+            transition: all 0.3s ease;
+        }
+        
+        .input-glow:focus {
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+            transform: scale(1.02);
+        }
+        
+        .result-card {
+            transition: all 0.4s ease;
+            transform: scale(0.95);
+            opacity: 0;
+        }
+        
+        .result-card.show {
+            transform: scale(1);
+            opacity: 1;
+        }
+        
+        .result-card:hover {
+            transform: scale(1.02);
+        }
+        
+        .metric-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .formula-box {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            backdrop-filter: blur(5px);
+        }
+        
+        .btn-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        .chart-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
