@@ -59,7 +59,7 @@ Dikembangkan sebagai bagian dari inisiatif saya dalam membuat Modul Ajar di **Cy
 
 1. **Clone repository** ini ke lokal:
    ```
-   git clone https://github.com/yourusername/erlang-calculator.git
+   git clone https://github.com/Rakhandhiyafa/erlang-calculator.git
    cd erlang-calculator
    ```
 
