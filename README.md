@@ -1,4 +1,4 @@
-# 📞 Erlang Calculator - Cyber Physical System Laboratory
+# 📞 Erlang Calculator
 
 Erlang Calculator adalah aplikasi web interaktif yang dirancang untuk melakukan perhitungan _blocking probability_ dan _call center performance_ menggunakan **Erlang B** dan **Erlang C** formulas.
 
@@ -48,8 +48,10 @@ Dikembangkan sebagai bagian dari inisiatif saya dalam membuat Modul Ajar di **Cy
 
 ## 📸 Screenshots
 
-![Preview 1](https://via.placeholder.com/800x400?text=Erlang+B+Calculator)
-![Preview 2](https://via.placeholder.com/800x400?text=Erlang+C+Calculator)
+![Preview 1](preview1.png)
+![Preview 2](preview2.png)
+![Preview 3](preview3.png)
+![Preview 4](preview4.png)
 
 ---
 
