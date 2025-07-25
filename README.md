@@ -2,7 +2,7 @@
 
 Erlang Calculator adalah aplikasi web interaktif yang dirancang untuk melakukan perhitungan _blocking probability_ dan _call center performance_ menggunakan **Erlang B** dan **Erlang C** formulas.
 
-Dikembangkan sebagai bagian dari inisiatif saya dalam mebuat Modul Ajar di **Cyber Physical System Laboratory**, aplikasi ini dapat digunakan untuk analisis performa jaringan telekomunikasi dan operasional pusat layanan pelanggan (_call center_).
+Dikembangkan sebagai bagian dari inisiatif saya dalam membuat Modul Ajar di **Cyber Physical System Laboratory**, aplikasi ini dapat digunakan untuk analisis performa jaringan telekomunikasi dan operasional pusat layanan pelanggan (_call center_).
 
 ---
 
@@ -56,10 +56,10 @@ Dikembangkan sebagai bagian dari inisiatif saya dalam mebuat Modul Ajar di **Cyb
 ## 📌 How to Use
 
 1. **Clone repository** ini ke lokal:
-   ```bash
+   ```
    git clone https://github.com/yourusername/erlang-calculator.git
    cd erlang-calculator
-````
+   ```
 
 2. **Buka file `index.html`** di browser apa pun:
 
@@ -69,10 +69,8 @@ Dikembangkan sebagai bagian dari inisiatif saya dalam mebuat Modul Ajar di **Cyb
 
 3. Masukkan parameter kalkulasi dan lihat hasilnya secara langsung!
 
----
 
 ## 💡 Credit & Acknowledgement
 
 Project ini dikembangkan oleh saya Sendir Rakhandhiya Fasya Albana  dari **Cyber Physical System Laboratory** sebagai alat bantu edukasi dan analisis antrian telekomunikasi.
 
----
